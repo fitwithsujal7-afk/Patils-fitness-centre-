@@ -26,7 +26,7 @@
 <script>
 const $=id=>document.getElementById(id);let db,records=[],tab='all';
 // Basic client-side login only; credentials are included in this public app code.
-const LOGIN_USER='Patis fitness centre',LOGIN_PASS='762096';
+const LOGIN_USER='sujal patil',LOGIN_PASS='932263';
 $('loginForm').onsubmit=e=>{e.preventDefault();const u=$('loginUser').value.trim().toLowerCase();const p=$('loginPass').value;if(u===LOGIN_USER.toLowerCase()&&p===LOGIN_PASS){sessionStorage.setItem('pfcLoggedIn','yes');$('loginScreen').classList.add('hidden')}else{$('loginError').textContent='Incorrect username or password. Please try again.';$('loginPass').value=''}};
 if(sessionStorage.getItem('pfcLoggedIn')==='yes')$('loginScreen').classList.add('hidden');
 const money=n=>'₹'+Number(n||0).toLocaleString('en-IN',{maximumFractionDigits:2});
