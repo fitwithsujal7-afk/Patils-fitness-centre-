@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#14251e">
+<link rel="manifest" href="manifest.webmanifest">
+<title>Patils Fitness Centre</title>
+<style>
+:root{--bg:#f3f6f4;--ink:#17251e;--muted:#64736b;--green:#173b2c;--lime:#c6f36b;--line:#e1e9e3;--red:#b42318;--amber:#9a6700;--white:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px system-ui,-apple-system,Segoe UI,sans-serif}
+button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padding:12px 15px;font-weight:650}
+.primary{background:var(--green);color:white}.secondary{background:#e8efe9;color:var(--green)}.danger{background:#fee4e2;color:var(--red)}.whatsapp{background:#d9f8e5;color:#126b37}
+header{background:var(--green);color:white;padding:20px 16px 24px;border-radius:0 0 24px 24px}
+.brand{display:flex;align-items:center;gap:12px}.logo{width:46px;height:46px;border-radius:14px;background:var(--lime);color:var(--green);display:grid;place-items:center;font-size:24px}
+h1{font-size:20px;margin:0}header p{margin:3px 0 0;color:#d3e3d9;font-size:12px;letter-spacing:1px}
+main{max-width:850px;margin:auto;padding:16px 14px 40px}.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:-5px}
+.stat{background:white;border:1px solid var(--line);border-radius:16px;padding:14px}.stat small{color:var(--muted)}.stat strong{display:block;font-size:27px;margin-top:3px}
+.tabs{display:flex;gap:8px;overflow:auto;padding:18px 0 12px}.tab{white-space:nowrap;background:#e8efe9;color:var(--green)}.tab.active{background:var(--green);color:white}
+.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:15px;margin:10px 0}.panel h2{font-size:17px;margin:0 0 12px}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap}.toolbar input{flex:1;min-width:170px}
+input,select{width:100%;padding:12px;border:1px solid #d6e0d8;border-radius:11px;background:white;color:var(--ink);margin:5px 0 12px}
+label{font-size:13px;font-weight:650;color:#43534a}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.full{grid-column:1/-1}
+.member{border:1px solid var(--line);border-radius:14px;padding:13px;margin:9px 0}.membertop{display:flex;justify-content:space-between;gap:10px;align-items:start}.member strong{font-size:16px}.muted{color:var(--muted);font-size:13px}.pill{font-size:11px;font-weight:750;border-radius:20px;padding:5px 9px;white-space:nowrap}.activepill{background:#dcfce7;color:#166534}.expiredpill{background:#fee2e2;color:#991b1b}.soonpill{background:#fef3c7;color:#92400e}
+.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}.actions button{padding:9px 11px;font-size:13px}
+.hidden{display:none!important}.empty{text-align:center;color:var(--muted);padding:25px 8px}
+.note{background:#fff8e6;border:1px solid #f3dfad;color:#755313;padding:12px;border-radius:12px;font-size:13px}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:16px}
+#login{max-width:420px;margin:10vh auto;padding:18px}#login .panel{padding:22px}
+.modalback{position:fixed;inset:0;background:#0008;display:grid;place-items:center;padding:14px;z-index:5}.modal{background:white;border-radius:18px;padding:18px;width:min(100%,520px);max-height:90vh;overflow:auto}
+@media(max-width:520px){.formgrid{grid-template-columns:1fr}.full{grid-column:auto}.stat strong{font-size:24px}}
+</style>
+</head>
+<body>
+<div id="login">
+ <div class="panel">
+  <div class="brand" style="margin-bottom:18px"><div class="logo">🏋️</div><div><h1>PATILS FITNESS CENTRE</h1><p style="color:#64736b">GYM MANAGEMENT</p></div></div>
+  <div id="setupBox" class="hidden">
+   <h2>Set your admin password</h2><p class="muted">Create a password for this device. Keep it safe.</p>
+   <label>New password</label><input id="newPass" type="password" autocomplete="new-password" placeholder="At least 6 characters">
+   <label>Confirm password</label><input id="confirmPass" type="password" autocomplete="new-password">
+   <button class="primary" style="width:100%" onclick="setPassword()">Create admin login</button>
+  </div>
+  <div id="loginBox" class="hidden">
+   <h2>Admin login</h2><label>Password</label><input id="loginPass" type="password" autocomplete="current-password" placeholder="Enter admin password">
+   <button class="primary" style="width:100%" onclick="login()">Unlock app</button>
+  </div>
+  <p id="loginError" style="color:#b42318;font-size:13px"></p>
+  <p class="muted">Your member database is stored in this browser on this device. Export backups regularly.</p>
+ </div>
+</div>
+<div id="app" class="hidden">
+<header><div class="brand"><div class="logo">🏋️</div><div><h1>PATILS FITNESS CENTRE</h1><p>MEMBERSHIP MANAGER</p></div></div></header>
+<main>
+ <div class="stats">
+  <div class="stat"><small>Total members</small><strong id="total">0</strong></div>
+  <div class="stat"><small>Active members</small><strong id="active">0</strong></div>
+  <div class="stat"><small>Expired members</small><strong id="expired">0</strong></div>
+  <div class="stat"><small>Expiring in 3 days</small><strong id="soon">0</strong></div>
+ </div>
+ <div class="tabs">
+  <button class="tab active" data-tab="all" onclick="showTab('all')">All members</button>
+  <button class="tab" data-tab="active" onclick="showTab('active')">Active</button>
+  <button class="tab" data-tab="soon" onclick="showTab('soon')">Expiring soon</button>
+  <button class="tab" data-tab="expired" onclick="showTab('expired')">Expired</button>
+ </div>
+ <section id="listPanel" class="panel">
+  <div class="toolbar"><input id="search" placeholder="Search name or mobile number" oninput="renderMembers()"><button class="primary" onclick="openForm()">＋ Add member</button></div>
+  <div id="members"></div>
+ </section>
+ <section class="panel">
+  <h2>Data backup</h2>
+  <p class="muted">Export a backup file regularly. Restore it if you change phones or browser data is lost.</p>
+  <div class="toolbar"><button class="secondary" onclick="exportBackup()">Export backup</button><button class="secondary" onclick="document.getElementById('restoreFile').click()">Restore backup</button><input id="restoreFile" type="file" accept="application/json" class="hidden" onchange="restoreBackup(event)"></div>
+ </section>
+ <div class="note">WhatsApp reminders are manual: tap “WhatsApp reminder”, review the message in WhatsApp, then press Send. No message is sent automatically.</div>
+ <footer><button class="secondary" onclick="logout()">Lock app</button><p>Member data stays on this device until deleted or browser/app data is cleared.</p></footer>
+</main>
+</div>
+<div id="modalRoot"></div>
+<script>
+const DB='pfc_members_v1', AUTH='pfc_admin_hash_v1';
+let db, currentTab='all', editingId=null;
+const $=id=>document.getElementById(id);
+function today(){let d=new Date();d.setHours(0,0,0,0);return d}
+function dateVal(s){if(!s)return null;let d=new Date(s+'T00:00:00');d.setHours(0,0,0,0);return d}
+function daysUntil(s){let d=dateVal(s);return d?Math.round((d-today())/86400000):999999}
+function status(m){let n=daysUntil(m.end);return n<0?'expired':n<=3?'soon':'active'}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function openDB(){return new Promise((resolve,reject)=>{let r=indexedDB.open(DB,1);r.onupgradeneeded=()=>r.result.createObjectStore('members',{keyPath:'id'});r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)})}
+function tx(mode='readonly'){return db.transaction('members',mode).objectStore('members')}
+function allMembers(){return new Promise((resolve,reject)=>{let r=tx().getAll();r.onsuccess=()=>resolve(r.result.sort((a,b)=>a.name.localeCompare(b.name)));r.onerror=()=>reject(r.error)})}
+async function saveMember(m){return new Promise((resolve,reject)=>{let r=tx('readwrite').put(m);r.onsuccess=resolve;r.onerror=()=>reject(r.error)})}
+async function deleteMember(id){return new Promise((resolve,reject)=>{let r=tx('readwrite').delete(id);r.onsuccess=resolve;r.onerror=()=>reject(r.error)})}
+async function digest(s){let b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+async function init(){db=await openDB();if(localStorage.getItem(AUTH))$('loginBox').classList.remove('hidden');else $('setupBox').classList.remove('hidden')}
+async function setPassword(){let p=$('newPass').value,c=$('confirmPass').value;if(p.length<6||p!==c){$('loginError').textContent='Use at least 6 characters and make both passwords match.';return}localStorage.setItem(AUTH,await digest(p));$('setupBox').classList.add('hidden');$('loginBox').classList.remove('hidden');$('loginError').textContent='Password created. Please log in.'}
+async function login(){if(await digest($('loginPass').value)!==localStorage.getItem(AUTH)){$('loginError').textContent='Incorrect password.';return}$('login').classList.add('hidden');$('app').classList.remove('hidden');renderMembers()}
+function logout(){$('app').classList.add('hidden');$('login').classList.remove('hidden');$('loginPass').value=''}
+function showTab(t){currentTab=t;document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===t));renderMembers()}
+async function renderMembers(){let list=await allMembers(),q=$('search').value.trim().toLowerCase();let counts={total:list.length,active:0,expired:0,soon:0};list.forEach(m=>counts[status(m)]++);$('total').textContent=counts.total;$('active').textContent=counts.active;$('expired').textContent=counts.expired;$('soon').textContent=counts.soon;
+let shown=list.filter(m=>(currentTab==='all'||status(m)===currentTab)&&(!q||m.name.toLowerCase().includes(q)||m.mobile.includes(q)));
+$('members').innerHTML=shown.length?shown.map(m=>{let st=status(m),days=daysUntil(m.end),label=st==='expired'?'EXPIRED':st==='soon'?(days===0?'EXPIRES TODAY':`EXPIRES IN ${days} DAY${days===1?'':'S'}`):'ACTIVE';return `<article class="member"><div class="membertop"><div><strong>${esc(m.name)}</strong><div class="muted">${esc(m.mobile)}</div></div><span class="pill ${st==='active'?'activepill':st==='soon'?'soonpill':'expiredpill'}">${label}</span></div><p class="muted">Subscription: ${esc(m.start)} → ${esc(m.end)}</p>${m.note?`<p class="muted">Note: ${esc(m.note)}</p>`:''}<div class="actions"><button class="whatsapp" onclick="whatsapp('${m.id}')">WhatsApp reminder</button><button class="secondary" onclick="openForm('${m.id}')">Edit</button><button class="danger" onclick="removeMember('${m.id}')">Delete</button></div></article>`}).join(''):'<div class="empty">No members in this list yet.</div>'}
+function openForm(id=null){editingId=id;allMembers().then(list=>{let m=list.find(x=>x.id===id)||{name:'',mobile:'',start:new Date().toISOString().slice(0,10),end:'',note:''};$('modalRoot').innerHTML=`<div class="modalback" onclick="if(event.target===this)closeForm()"><div class="modal"><h2>${id?'Edit member':'Add new member'}</h2><form onsubmit="submitMember(event)"><label>Full name *</label><input id="fName" required maxlength="80" value="${esc(m.name)}"><label>Mobile number with country code *</label><input id="fMobile" required inputmode="tel" placeholder="e.g. 919876543210" value="${esc(m.mobile)}"><div class="formgrid"><div><label>Subscription start *</label><input id="fStart" type="date" required value="${esc(m.start)}"></div><div><label>Subscription end *</label><input id="fEnd" type="date" required value="${esc(m.end)}"></div></div><label>Notes (optional)</label><input id="fNote" maxlength="200" value="${esc(m.note)}"><div class="actions"><button class="primary" type="submit">Save member</button><button class="secondary" type="button" onclick="closeForm()">Cancel</button></div></form></div></div>`})}
+function closeForm(){$('modalRoot').innerHTML=''}
+async function submitMember(e){e.preventDefault();let name=$('fName').value.trim(),mobile=$('fMobile').value.replace(/[^\d]/g,''),start=$('fStart').value,end=$('fEnd').value;if(!name||mobile.length<10||!start||!end||end<start){alert('Check the name, mobile number and subscription dates. End date must not be before start date.');return}await saveMember({id:editingId||crypto.randomUUID(),name,mobile,start,end,note:$('fNote').value.trim()});closeForm();renderMembers()}
+async function removeMember(id){if(confirm('Delete this member permanently from this device?')){await deleteMember(id);renderMembers()}}
+async function whatsapp(id){let m=(await allMembers()).find(x=>x.id===id);if(!m)return;let st=status(m),msg;if(st==='expired')msg=`Hello ${m.name}, your membership at Patils Fitness Centre has expired. Please contact us or visit the gym to renew your membership. Thank you!`;else if(st==='soon')msg=`Hello ${m.name}, your membership at Patils Fitness Centre ${daysUntil(m.end)===0?'expires today':`expires in ${daysUntil(m.end)} day(s)`} (${m.end}). Please renew to continue your workouts. Thank you!`;else msg=`Hello ${m.name}, your membership at Patils Fitness Centre is currently active until ${m.end}. Keep up the great work!`;window.open(`https://wa.me/${m.mobile}?text=${encodeURIComponent(msg)}`,'_blank')}
+async function exportBackup(){let data=await allMembers();let blob=new Blob([JSON.stringify({app:'Patils Fitness Centre',version:1,exportedAt:new Date().toISOString(),members:data},null,2)],{type:'application/json'});let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='patils-fitness-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();URL.revokeObjectURL(a.href)}
+async function restoreBackup(e){let f=e.target.files[0];if(!f)return;try{let obj=JSON.parse(await f.text());if(!Array.isArray(obj.members))throw Error();if(!confirm(`Import ${obj.members.length} members? Matching IDs will be replaced; other existing members will remain.`))return;for(let m of obj.members){if(m.id&&m.name&&m.mobile&&m.start&&m.end)await saveMember(m)}alert('Backup restored.');renderMembers()}catch{alert('That backup file is not valid.')}e.target.value=''}
+init().catch(e=>alert('Could not open local member database: '+e.message));
+if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+</script>
+</body></html>
