@@ -1,27 +1,32 @@
-PATILS FITNESS CENTRE — ANDROID WEB APP STARTER
+PATILS FITNESS CENTRE – FINAL OFFLINE EDITION
+=============================================
 
-FILES
-- index.html: app interface and member management
-- manifest.webmanifest: installable web app metadata
-- sw.js: basic offline caching
-
-HOW TO USE ON ANDROID
-1. Upload the contents of this folder to an HTTPS static host (for example, your own hosting).
-2. Open the hosted index.html URL in Chrome on your Android phone.
-3. Use Chrome menu > Install app (or Add to Home screen).
-4. On first launch, create your admin password.
+This version stores all member and payment records locally on ONE Android phone using IndexedDB. It does not connect to Firebase, cloud databases, analytics or a server.
 
 FEATURES
-- Admin password set on first use
-- IndexedDB member database on this device/browser
-- Add, edit, delete, search members
-- Active / expired / expiring within 3 days
-- WhatsApp manual reminder links (review and press Send in WhatsApp)
-- JSON export and restore backup
+- Register/edit/delete members with name, mobile, membership start/end, total fee and notes.
+- Active, expired and expires-within-3-days lists.
+- Cash and UPI payment records, partial payments, balance due and payment history.
+- Individual payment receipt. On Android Chrome print dialog choose "Save as PDF".
+- WhatsApp membership reminder and payment receipt text are MANUAL: WhatsApp opens with a prefilled message; user reviews and presses Send.
+- Export JSON backup and restore JSON backup.
+- Local offline app shell after it has been installed/opened once while online.
 
-IMPORTANT LIMITATIONS
-- This is an installable PWA starter, not a signed APK.
-- Member records are stored locally in the browser on this device. They persist across normal app closes/restarts, but can be lost if browser/site data is cleared, the app is uninstalled with its data, or the device is lost.
-- Export backups regularly and store them somewhere safe.
-- Admin password is a local app gate, not enterprise-grade security; anyone with access to the device/browser profile may be able to inspect local app data.
-- For true cloud persistence, multi-device sync, secure server-side authentication and automated scheduled reminders, deploy a backend and WhatsApp Business Platform integration.
+INSTALL / UPDATE EXISTING GITHUB PAGES APP
+1. Download and extract this ZIP on your Android phone.
+2. Open the existing GitHub repository you already created.
+3. Replace the repository's index.html, manifest.webmanifest and sw.js with these versions.
+4. Open the icons folder in the repository and replace icon-192.png and icon-512.png.
+5. Commit changes to main. Wait for GitHub Pages to publish.
+6. Open the same published Pages URL in Chrome while online. Refresh it; then use Chrome menu -> Install app / Add to Home screen.
+7. Open the installed app once. It caches the app shell for offline use. Test airplane mode by closing and reopening the app.
+
+IMPORTANT DATA SAFETY
+- Member records are stored on this phone in the app's browser IndexedDB. They are not uploaded to GitHub or sent to any cloud.
+- Do not clear Chrome site data, app storage, uninstall/reset the app, or clear browser data unless you have a backup.
+- Use Backup & restore -> Download backup regularly and copy the JSON backup to a safe location (for example, phone Downloads and another secure drive).
+- To move to a new phone: install/open the app there, use Restore backup and select your JSON backup.
+- A website/PWA cannot guarantee data will survive every OS cleanup, browser reset, uninstall, or device failure. Backups are essential.
+- The first installation/update needs internet to load the hosted app. After it has cached, member and payment management works offline. WhatsApp sending and initial website loading require internet.
+- This is a PWA website installed to the Android home screen, not a Play Store APK.
+- If old app data was in the previous localStorage version, this new IndexedDB version does not automatically migrate it. Export any old app backup first if the old version provides one; otherwise manually add members again.

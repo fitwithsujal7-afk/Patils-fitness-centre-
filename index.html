@@ -1,114 +1,60 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#14251e">
-<link rel="manifest" href="manifest.webmanifest">
-<title>Patils Fitness Centre</title>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#173b2c"><link rel="manifest" href="./manifest.webmanifest">
+<title>PATILS FITNESS CENTRE</title>
 <style>
-:root{--bg:#f3f6f4;--ink:#17251e;--muted:#64736b;--green:#173b2c;--lime:#c6f36b;--line:#e1e9e3;--red:#b42318;--amber:#9a6700;--white:#fff}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px system-ui,-apple-system,Segoe UI,sans-serif}
-button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padding:12px 15px;font-weight:650}
-.primary{background:var(--green);color:white}.secondary{background:#e8efe9;color:var(--green)}.danger{background:#fee4e2;color:var(--red)}.whatsapp{background:#d9f8e5;color:#126b37}
-header{background:var(--green);color:white;padding:20px 16px 24px;border-radius:0 0 24px 24px}
-.brand{display:flex;align-items:center;gap:12px}.logo{width:46px;height:46px;border-radius:14px;background:var(--lime);color:var(--green);display:grid;place-items:center;font-size:24px}
-h1{font-size:20px;margin:0}header p{margin:3px 0 0;color:#d3e3d9;font-size:12px;letter-spacing:1px}
-main{max-width:850px;margin:auto;padding:16px 14px 40px}.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:-5px}
-.stat{background:white;border:1px solid var(--line);border-radius:16px;padding:14px}.stat small{color:var(--muted)}.stat strong{display:block;font-size:27px;margin-top:3px}
-.tabs{display:flex;gap:8px;overflow:auto;padding:18px 0 12px}.tab{white-space:nowrap;background:#e8efe9;color:var(--green)}.tab.active{background:var(--green);color:white}
-.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:15px;margin:10px 0}.panel h2{font-size:17px;margin:0 0 12px}
-.toolbar{display:flex;gap:8px;flex-wrap:wrap}.toolbar input{flex:1;min-width:170px}
-input,select{width:100%;padding:12px;border:1px solid #d6e0d8;border-radius:11px;background:white;color:var(--ink);margin:5px 0 12px}
-label{font-size:13px;font-weight:650;color:#43534a}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.full{grid-column:1/-1}
-.member{border:1px solid var(--line);border-radius:14px;padding:13px;margin:9px 0}.membertop{display:flex;justify-content:space-between;gap:10px;align-items:start}.member strong{font-size:16px}.muted{color:var(--muted);font-size:13px}.pill{font-size:11px;font-weight:750;border-radius:20px;padding:5px 9px;white-space:nowrap}.activepill{background:#dcfce7;color:#166534}.expiredpill{background:#fee2e2;color:#991b1b}.soonpill{background:#fef3c7;color:#92400e}
-.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}.actions button{padding:9px 11px;font-size:13px}
-.hidden{display:none!important}.empty{text-align:center;color:var(--muted);padding:25px 8px}
-.note{background:#fff8e6;border:1px solid #f3dfad;color:#755313;padding:12px;border-radius:12px;font-size:13px}
-footer{text-align:center;color:var(--muted);font-size:12px;padding:16px}
-#login{max-width:420px;margin:10vh auto;padding:18px}#login .panel{padding:22px}
-.modalback{position:fixed;inset:0;background:#0008;display:grid;place-items:center;padding:14px;z-index:5}.modal{background:white;border-radius:18px;padding:18px;width:min(100%,520px);max-height:90vh;overflow:auto}
-@media(max-width:520px){.formgrid{grid-template-columns:1fr}.full{grid-column:auto}.stat strong{font-size:24px}}
-</style>
-</head>
-<body>
-<div id="login">
- <div class="panel">
-  <div class="brand" style="margin-bottom:18px"><div class="logo">🏋️</div><div><h1>PATILS FITNESS CENTRE</h1><p style="color:#64736b">GYM MANAGEMENT</p></div></div>
-  <div id="setupBox" class="hidden">
-   <h2>Set your admin password</h2><p class="muted">Create a password for this device. Keep it safe.</p>
-   <label>New password</label><input id="newPass" type="password" autocomplete="new-password" placeholder="At least 6 characters">
-   <label>Confirm password</label><input id="confirmPass" type="password" autocomplete="new-password">
-   <button class="primary" style="width:100%" onclick="setPassword()">Create admin login</button>
-  </div>
-  <div id="loginBox" class="hidden">
-   <h2>Admin login</h2><label>Password</label><input id="loginPass" type="password" autocomplete="current-password" placeholder="Enter admin password">
-   <button class="primary" style="width:100%" onclick="login()">Unlock app</button>
-  </div>
-  <p id="loginError" style="color:#b42318;font-size:13px"></p>
-  <p class="muted">Your member database is stored in this browser on this device. Export backups regularly.</p>
- </div>
-</div>
-<div id="app" class="hidden">
-<header><div class="brand"><div class="logo">🏋️</div><div><h1>PATILS FITNESS CENTRE</h1><p>MEMBERSHIP MANAGER</p></div></div></header>
+:root{--green:#173b2c;--lime:#c6f36b;--bg:#f2f6f3;--ink:#17251e;--muted:#64736b;--line:#dfe8e1}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px system-ui,Arial}header{background:var(--green);color:white;padding:18px 16px 21px;border-radius:0 0 22px 22px}.brand{display:flex;align-items:center;gap:12px}.logo{width:46px;height:46px;border-radius:14px;background:var(--lime);color:var(--green);display:grid;place-items:center;font-size:25px}h1{font-size:19px;margin:0}header p{margin:3px 0 0;color:#d6e6dc;font-size:11px;letter-spacing:1px}main{max-width:850px;margin:auto;padding:13px}.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.stat,.panel{background:white;border:1px solid var(--line);border-radius:15px;padding:13px}.stat small,.muted,.small{color:var(--muted)}.stat strong{display:block;font-size:24px;margin-top:3px}.tabs{display:flex;gap:7px;overflow:auto;padding:14px 0 7px}.tab,button{border:0;border-radius:11px;padding:10px 13px;font:inherit;font-weight:650;cursor:pointer}.tab{white-space:nowrap;background:#e5eee7;color:var(--green)}.tab.active,.primary{background:var(--green);color:white}.secondary{background:#e8efe9;color:var(--green)}.danger{background:#fee4e2;color:#a32119}.wa{background:#d9f8e5;color:#126b37}.panel{margin:10px 0}.panel h2{font-size:17px;margin:0 0 10px}.toolbar,.actions{display:flex;gap:7px;flex-wrap:wrap}input,select,textarea{width:100%;padding:11px;border:1px solid #d5e0d8;border-radius:10px;background:white;font:inherit;margin:5px 0 10px}label{font-size:13px;font-weight:650;color:#405148}.toolbar input{flex:1;min-width:145px}.member{background:#fff;border:1px solid var(--line);border-radius:13px;padding:12px;margin:9px 0}.top{display:flex;justify-content:space-between;gap:8px}.pill{font-size:10px;font-weight:750;border-radius:20px;padding:5px 8px;height:max-content}.green{background:#dcfce7;color:#166534}.red{background:#fee2e2;color:#991b1b}.amber{background:#fef3c7;color:#92400e}.actions{margin-top:9px}.actions button{font-size:12px;padding:8px 9px}.empty{text-align:center;padding:22px;color:var(--muted)}.note{background:#fff8e6;border:1px solid #f0dfa9;padding:11px;border-radius:11px;color:#765517;font-size:12px}.hidden{display:none!important}.backdrop{position:fixed;inset:0;background:#0008;display:grid;place-items:center;padding:12px;z-index:5}.modal{background:white;border-radius:16px;padding:17px;width:min(100%,520px);max-height:92vh;overflow:auto}.modal h2{margin:0 0 12px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:0 9px}.full{grid-column:1/-1}.small{font-size:12px}.right{margin-left:auto}
+@media(max-width:520px){.grid{grid-template-columns:1fr}.full{grid-column:auto}}
+</style></head><body>
+<header><div class="brand"><div class="logo">🏋️</div><div><h1>PATILS FITNESS CENTRE</h1><p>PRIVATE OFFLINE GYM MANAGEMENT</p></div></div></header>
 <main>
- <div class="stats">
-  <div class="stat"><small>Total members</small><strong id="total">0</strong></div>
-  <div class="stat"><small>Active members</small><strong id="active">0</strong></div>
-  <div class="stat"><small>Expired members</small><strong id="expired">0</strong></div>
-  <div class="stat"><small>Expiring in 3 days</small><strong id="soon">0</strong></div>
- </div>
- <div class="tabs">
-  <button class="tab active" data-tab="all" onclick="showTab('all')">All members</button>
-  <button class="tab" data-tab="active" onclick="showTab('active')">Active</button>
-  <button class="tab" data-tab="soon" onclick="showTab('soon')">Expiring soon</button>
-  <button class="tab" data-tab="expired" onclick="showTab('expired')">Expired</button>
- </div>
- <section id="listPanel" class="panel">
-  <div class="toolbar"><input id="search" placeholder="Search name or mobile number" oninput="renderMembers()"><button class="primary" onclick="openForm()">＋ Add member</button></div>
-  <div id="members"></div>
- </section>
- <section class="panel">
-  <h2>Data backup</h2>
-  <p class="muted">Export a backup file regularly. Restore it if you change phones or browser data is lost.</p>
-  <div class="toolbar"><button class="secondary" onclick="exportBackup()">Export backup</button><button class="secondary" onclick="document.getElementById('restoreFile').click()">Restore backup</button><input id="restoreFile" type="file" accept="application/json" class="hidden" onchange="restoreBackup(event)"></div>
- </section>
- <div class="note">WhatsApp reminders are manual: tap “WhatsApp reminder”, review the message in WhatsApp, then press Send. No message is sent automatically.</div>
- <footer><button class="secondary" onclick="logout()">Lock app</button><p>Member data stays on this device until deleted or browser/app data is cleared.</p></footer>
-</main>
+<div class="stats">
+<div class="stat"><small>Total members</small><strong id="total">0</strong></div><div class="stat"><small>Active memberships</small><strong id="active">0</strong></div>
+<div class="stat"><small>Expired memberships</small><strong id="expired">0</strong></div><div class="stat"><small>Expiring within 3 days</small><strong id="soon">0</strong></div>
+<div class="stat"><small>Total fees outstanding</small><strong id="due">₹0</strong></div><div class="stat"><small>Collected this month</small><strong id="month">₹0</strong></div>
 </div>
-<div id="modalRoot"></div>
+<div class="tabs"><button class="tab active" data-tab="all">All</button><button class="tab" data-tab="active">Active</button><button class="tab" data-tab="soon">Expiring soon</button><button class="tab" data-tab="expired">Expired</button><button class="tab" data-tab="due">Fees due</button></div>
+<section class="panel"><div class="toolbar"><input id="search" placeholder="Search member name or mobile"><button class="primary" id="add">＋ Add member</button></div><div id="members"></div></section>
+<section class="panel"><h2>Backup & restore</h2><p class="small">Your records are stored only in this phone's browser storage. Export a backup regularly, especially before changing phones, clearing browser data or uninstalling.</p><div class="toolbar"><button class="secondary" id="backup">Download backup</button><button class="secondary" id="restore">Restore backup</button><input id="file" type="file" accept="application/json" class="hidden"></div></section>
+<div class="note"><b>Offline privacy:</b> Member and payment records stay on this phone. No cloud account or online database is used. WhatsApp requires internet and opens with a prepared message; you must review and press Send. Receipts can be printed or saved as PDF using Android's print menu.</div>
+<div style="text-align:center;padding:14px"><button class="danger" id="wipe">Delete all app records</button><p class="small">App works offline after it has been installed and opened once online. Do not clear Chrome/site storage.</p></div>
+</main><div id="modal"></div>
 <script>
-const DB='pfc_members_v1', AUTH='pfc_admin_hash_v1';
-let db, currentTab='all', editingId=null;
-const $=id=>document.getElementById(id);
-function today(){let d=new Date();d.setHours(0,0,0,0);return d}
-function dateVal(s){if(!s)return null;let d=new Date(s+'T00:00:00');d.setHours(0,0,0,0);return d}
-function daysUntil(s){let d=dateVal(s);return d?Math.round((d-today())/86400000):999999}
-function status(m){let n=daysUntil(m.end);return n<0?'expired':n<=3?'soon':'active'}
-function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function openDB(){return new Promise((resolve,reject)=>{let r=indexedDB.open(DB,1);r.onupgradeneeded=()=>r.result.createObjectStore('members',{keyPath:'id'});r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)})}
-function tx(mode='readonly'){return db.transaction('members',mode).objectStore('members')}
-function allMembers(){return new Promise((resolve,reject)=>{let r=tx().getAll();r.onsuccess=()=>resolve(r.result.sort((a,b)=>a.name.localeCompare(b.name)));r.onerror=()=>reject(r.error)})}
-async function saveMember(m){return new Promise((resolve,reject)=>{let r=tx('readwrite').put(m);r.onsuccess=resolve;r.onerror=()=>reject(r.error)})}
-async function deleteMember(id){return new Promise((resolve,reject)=>{let r=tx('readwrite').delete(id);r.onsuccess=resolve;r.onerror=()=>reject(r.error)})}
-async function digest(s){let b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
-async function init(){db=await openDB();if(localStorage.getItem(AUTH))$('loginBox').classList.remove('hidden');else $('setupBox').classList.remove('hidden')}
-async function setPassword(){let p=$('newPass').value,c=$('confirmPass').value;if(p.length<6||p!==c){$('loginError').textContent='Use at least 6 characters and make both passwords match.';return}localStorage.setItem(AUTH,await digest(p));$('setupBox').classList.add('hidden');$('loginBox').classList.remove('hidden');$('loginError').textContent='Password created. Please log in.'}
-async function login(){if(await digest($('loginPass').value)!==localStorage.getItem(AUTH)){$('loginError').textContent='Incorrect password.';return}$('login').classList.add('hidden');$('app').classList.remove('hidden');renderMembers()}
-function logout(){$('app').classList.add('hidden');$('login').classList.remove('hidden');$('loginPass').value=''}
-function showTab(t){currentTab=t;document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===t));renderMembers()}
-async function renderMembers(){let list=await allMembers(),q=$('search').value.trim().toLowerCase();let counts={total:list.length,active:0,expired:0,soon:0};list.forEach(m=>counts[status(m)]++);$('total').textContent=counts.total;$('active').textContent=counts.active;$('expired').textContent=counts.expired;$('soon').textContent=counts.soon;
-let shown=list.filter(m=>(currentTab==='all'||status(m)===currentTab)&&(!q||m.name.toLowerCase().includes(q)||m.mobile.includes(q)));
-$('members').innerHTML=shown.length?shown.map(m=>{let st=status(m),days=daysUntil(m.end),label=st==='expired'?'EXPIRED':st==='soon'?(days===0?'EXPIRES TODAY':`EXPIRES IN ${days} DAY${days===1?'':'S'}`):'ACTIVE';return `<article class="member"><div class="membertop"><div><strong>${esc(m.name)}</strong><div class="muted">${esc(m.mobile)}</div></div><span class="pill ${st==='active'?'activepill':st==='soon'?'soonpill':'expiredpill'}">${label}</span></div><p class="muted">Subscription: ${esc(m.start)} → ${esc(m.end)}</p>${m.note?`<p class="muted">Note: ${esc(m.note)}</p>`:''}<div class="actions"><button class="whatsapp" onclick="whatsapp('${m.id}')">WhatsApp reminder</button><button class="secondary" onclick="openForm('${m.id}')">Edit</button><button class="danger" onclick="removeMember('${m.id}')">Delete</button></div></article>`}).join(''):'<div class="empty">No members in this list yet.</div>'}
-function openForm(id=null){editingId=id;allMembers().then(list=>{let m=list.find(x=>x.id===id)||{name:'',mobile:'',start:new Date().toISOString().slice(0,10),end:'',note:''};$('modalRoot').innerHTML=`<div class="modalback" onclick="if(event.target===this)closeForm()"><div class="modal"><h2>${id?'Edit member':'Add new member'}</h2><form onsubmit="submitMember(event)"><label>Full name *</label><input id="fName" required maxlength="80" value="${esc(m.name)}"><label>Mobile number with country code *</label><input id="fMobile" required inputmode="tel" placeholder="e.g. 919876543210" value="${esc(m.mobile)}"><div class="formgrid"><div><label>Subscription start *</label><input id="fStart" type="date" required value="${esc(m.start)}"></div><div><label>Subscription end *</label><input id="fEnd" type="date" required value="${esc(m.end)}"></div></div><label>Notes (optional)</label><input id="fNote" maxlength="200" value="${esc(m.note)}"><div class="actions"><button class="primary" type="submit">Save member</button><button class="secondary" type="button" onclick="closeForm()">Cancel</button></div></form></div></div>`})}
-function closeForm(){$('modalRoot').innerHTML=''}
-async function submitMember(e){e.preventDefault();let name=$('fName').value.trim(),mobile=$('fMobile').value.replace(/[^\d]/g,''),start=$('fStart').value,end=$('fEnd').value;if(!name||mobile.length<10||!start||!end||end<start){alert('Check the name, mobile number and subscription dates. End date must not be before start date.');return}await saveMember({id:editingId||crypto.randomUUID(),name,mobile,start,end,note:$('fNote').value.trim()});closeForm();renderMembers()}
-async function removeMember(id){if(confirm('Delete this member permanently from this device?')){await deleteMember(id);renderMembers()}}
-async function whatsapp(id){let m=(await allMembers()).find(x=>x.id===id);if(!m)return;let st=status(m),msg;if(st==='expired')msg=`Hello ${m.name}, your membership at Patils Fitness Centre has expired. Please contact us or visit the gym to renew your membership. Thank you!`;else if(st==='soon')msg=`Hello ${m.name}, your membership at Patils Fitness Centre ${daysUntil(m.end)===0?'expires today':`expires in ${daysUntil(m.end)} day(s)`} (${m.end}). Please renew to continue your workouts. Thank you!`;else msg=`Hello ${m.name}, your membership at Patils Fitness Centre is currently active until ${m.end}. Keep up the great work!`;window.open(`https://wa.me/${m.mobile}?text=${encodeURIComponent(msg)}`,'_blank')}
-async function exportBackup(){let data=await allMembers();let blob=new Blob([JSON.stringify({app:'Patils Fitness Centre',version:1,exportedAt:new Date().toISOString(),members:data},null,2)],{type:'application/json'});let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='patils-fitness-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();URL.revokeObjectURL(a.href)}
-async function restoreBackup(e){let f=e.target.files[0];if(!f)return;try{let obj=JSON.parse(await f.text());if(!Array.isArray(obj.members))throw Error();if(!confirm(`Import ${obj.members.length} members? Matching IDs will be replaced; other existing members will remain.`))return;for(let m of obj.members){if(m.id&&m.name&&m.mobile&&m.start&&m.end)await saveMember(m)}alert('Backup restored.');renderMembers()}catch{alert('That backup file is not valid.')}e.target.value=''}
-init().catch(e=>alert('Could not open local member database: '+e.message));
-if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
-</script>
-</body></html>
+const $=id=>document.getElementById(id);let db,records=[],tab='all';
+const money=n=>'₹'+Number(n||0).toLocaleString('en-IN',{maximumFractionDigits:2});
+const iso=()=>new Date().toISOString().slice(0,10);
+const today=()=>{let d=new Date();d.setHours(0,0,0,0);return d};
+const days=s=>{if(!s)return 999999;return Math.round((new Date(s+'T00:00:00')-today())/86400000)};
+const status=m=>days(m.end)<0?'expired':days(m.end)<=3?'soon':'active';
+const paid=m=>(m.payments||[]).reduce((s,p)=>s+Number(p.amount||0),0);
+const balance=m=>Math.max(0,Number(m.fee||0)-paid(m));
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function openDB(){return new Promise((res,rej)=>{let r=indexedDB.open('PatilsFitnessOffline',1);r.onupgradeneeded=()=>r.result.createObjectStore('members',{keyPath:'id'});r.onsuccess=()=>{db=r.result;res()};r.onerror=()=>rej(r.error)})}
+function all(){return new Promise((res,rej)=>{let r=db.transaction('members').objectStore('members').getAll();r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
+function save(m){return new Promise((res,rej)=>{let r=db.transaction('members','readwrite').objectStore('members').put(m);r.onsuccess=()=>res();r.onerror=()=>rej(r.error)})}
+function remove(id){return new Promise((res,rej)=>{let r=db.transaction('members','readwrite').objectStore('members').delete(id);r.onsuccess=()=>res();r.onerror=()=>rej(r.error)})}
+async function refresh(){records=await all();render()}
+function render(){let total=records.length,active=0,expired=0,soon=0,due=0,month=0,key=iso().slice(0,7);records.forEach(m=>{let s=status(m);if(s==='active')active++;if(s==='expired')expired++;if(s==='soon')soon++;due+=balance(m);(m.payments||[]).forEach(p=>{if((p.date||'').slice(0,7)===key)month+=Number(p.amount||0)})});$('total').textContent=total;$('active').textContent=active;$('expired').textContent=expired;$('soon').textContent=soon;$('due').textContent=money(due);$('month').textContent=money(month);
+let q=$('search').value.trim().toLowerCase();let list=records.filter(m=>(tab==='all'||(tab==='due'?balance(m)>0:status(m)===tab))&&(!q||(m.name||'').toLowerCase().includes(q)||(m.mobile||'').includes(q)));
+$('members').innerHTML=list.length?list.map(m=>{let s=status(m),n=days(m.end),label=s==='expired'?'EXPIRED':s==='soon'?(n===0?'EXPIRES TODAY':`EXPIRES IN ${n} DAY${n===1?'':'S'}`):'ACTIVE';return `<article class="member"><div class="top"><div><b>${esc(m.name)}</b><div class="small">${esc(m.mobile)}</div></div><span class="pill ${s==='active'?'green':s==='soon'?'amber':'red'}">${label}</span></div><p class="small">Subscription: ${esc(m.start)} → ${esc(m.end)}</p><p class="small">Fee ${money(m.fee)} · Paid ${money(paid(m))} · <b>Due ${money(balance(m))}</b></p><div class="actions"><button class="primary" onclick="payment('${m.id}')">＋ Payment</button><button class="secondary" onclick="history('${m.id}')">History / receipt</button><button class="wa" onclick="remind('${m.id}')">WhatsApp</button><button class="secondary" onclick="edit('${m.id}')">Edit</button><button class="danger" onclick="del('${m.id}')">Delete</button></div></article>`}).join(''):'<div class="empty">No members found.</div>'}
+function show(content){$('modal').innerHTML=`<div class="backdrop" id="shade"><div class="modal">${content}</div></div>`;$('shade').onclick=e=>{if(e.target.id==='shade')close()}}
+function close(){$('modal').innerHTML=''}
+async function edit(id){let m=records.find(x=>x.id===id)||{name:'',mobile:'',start:iso(),end:'',fee:0,payments:[]};show(`<h2>${id?'Edit member':'Register member'}</h2><form id="mf"><label>Member full name *</label><input id="name" required value="${esc(m.name)}"><label>Mobile number *</label><input id="mobile" inputmode="tel" required value="${esc(m.mobile)}"><div class="grid"><div><label>Subscription start *</label><input id="start" type="date" required value="${esc(m.start)}"></div><div><label>Subscription end *</label><input id="end" type="date" required value="${esc(m.end)}"></div></div><label>Total subscription fee (₹) *</label><input id="fee" type="number" min="0" step=".01" required value="${Number(m.fee||0)}"><label>Notes (optional)</label><input id="note" value="${esc(m.note||'')}"><div class="actions"><button class="primary">Save member</button><button type="button" class="secondary" onclick="close()">Cancel</button></div></form>`);$('mf').onsubmit=async e=>{e.preventDefault();let mobile=$('mobile').value.replace(/\D/g,'');if(mobile.length<10||$('end').value<$('start').value){alert('Check mobile number and subscription dates.');return}await save({...m,id:m.id||crypto.randomUUID(),name:$('name').value.trim(),mobile,start:$('start').value,end:$('end').value,fee:Number($('fee').value),note:$('note').value.trim()});close();refresh()}}
+async function payment(id){let m=records.find(x=>x.id===id);show(`<h2>Record payment</h2><p class="small">${esc(m.name)} · Outstanding ${money(balance(m))}</p><form id="pf"><label>Amount received (₹)</label><input id="amount" type="number" min=".01" step=".01" required><label>Payment date</label><input id="date" type="date" value="${iso()}" required><label>Payment method</label><select id="method"><option>Cash</option><option>UPI</option></select><label>UPI reference / note (optional)</label><input id="ref"><div class="actions"><button class="primary">Save payment & receipt</button><button type="button" class="secondary" onclick="close()">Cancel</button></div></form>`);$('pf').onsubmit=async e=>{e.preventDefault();let p={id:crypto.randomUUID(),receipt:'PFC-'+Date.now().toString().slice(-8),amount:Number($('amount').value),date:$('date').value,method:$('method').value,ref:$('ref').value};if(p.amount<=0)return;m.payments=m.payments||[];m.payments.push(p);await save(m);close();await refresh();receipt(m,p)}}
+function receipt(m,p){let total=paid(m),bal=balance(m),w=window.open('','_blank');if(!w){alert('Allow pop-ups to print receipt.');return}w.document.write(`<html><head><title>${p.receipt}</title><style>body{font:16px Arial;padding:25px;color:#17251e}.r{max-width:500px;margin:auto;border:2px solid #173b2c;padding:22px}h2{text-align:center}.line{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #ddd}.big{font-size:20px;font-weight:bold}@media print{button{display:none}}</style></head><body><div class="r"><h2>PATILS FITNESS CENTRE</h2><p style="text-align:center">PAYMENT RECEIPT</p><div class="line"><span>Receipt no.</span><b>${p.receipt}</b></div><div class="line"><span>Member</span><b>${esc(m.name)}</b></div><div class="line"><span>Mobile</span><b>${esc(m.mobile)}</b></div><div class="line"><span>Date</span><b>${p.date}</b></div><div class="line"><span>Method</span><b>${p.method}</b></div><div class="line"><span>Total subscription fee</span><b>${money(m.fee)}</b></div><div class="line"><span>This payment</span><b>${money(p.amount)}</b></div><div class="line"><span>Total paid</span><b>${money(total)}</b></div><div class="line big"><span>Balance due</span><b>${money(bal)}</b></div><p style="text-align:center">Thank you for choosing Patils Fitness Centre!</p><button onclick="window.print()">Print / Save as PDF</button></div></body></html>`);w.document.close()}
+function history(id){let m=records.find(x=>x.id===id);show(`<h2>Payment history – ${esc(m.name)}</h2><p>Total fee ${money(m.fee)} · Paid ${money(paid(m))} · Due ${money(balance(m))}</p>${(m.payments||[]).length?m.payments.map(p=>`<div class="member"><b>${money(p.amount)}</b> · ${p.date} · ${p.method}<p class="small">${p.receipt}</p><button class="secondary" onclick="reprint('${id}','${p.id}')">Print receipt</button><button class="wa" onclick="receiptWA('${id}','${p.id}')">WhatsApp receipt</button></div>`).join(''):'<p class="empty">No payments yet.</p>'}<button class="secondary" onclick="close()">Close</button>`)}
+function wa(m,msg){let n=m.mobile.replace(/\D/g,'');if(n.length===10)n='91'+n;location.href='https://wa.me/'+n+'?text='+encodeURIComponent(msg)}
+function remind(id){let m=records.find(x=>x.id===id),s=status(m);let msg=s==='expired'?`Hello ${m.name}, your Patils Fitness Centre membership has expired. Please contact us to renew.`:s==='soon'?`Hello ${m.name}, your Patils Fitness Centre membership expires on ${m.end}. Please renew soon.`:`Hello ${m.name}, your Patils Fitness Centre membership is active until ${m.end}. Thank you!`;wa(m,msg)}
+function receiptWA(id,pid){let m=records.find(x=>x.id===id),p=m.payments.find(x=>x.id===pid);wa(m,`Hello ${m.name}, payment received at Patils Fitness Centre. Receipt ${p.receipt}: ${money(p.amount)} on ${p.date} via ${p.method}. Total fee ${money(m.fee)}, paid ${money(paid(m))}, balance ${money(balance(m))}. Thank you!`)}
+function reprint(id,pid){let m=records.find(x=>x.id===id),p=m.payments.find(x=>x.id===pid);receipt(m,p)}
+async function del(id){if(confirm('Delete this member and all their payment history permanently?')){await remove(id);refresh()}}
+window.edit=edit;window.payment=payment;window.history=history;window.remind=remind;window.del=del;window.reprint=reprint;window.receiptWA=receiptWA;window.close=close;
+async function backup(){let data={app:'PATILS FITNESS CENTRE OFFLINE',version:1,exportedAt:new Date().toISOString(),members:records};let a=document.createElement('a'),u=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.href=u;a.download='Patils-Fitness-Backup-'+iso()+'.json';a.click();URL.revokeObjectURL(u)}
+async function restore(file){let obj=JSON.parse(await file.text());if(!Array.isArray(obj.members))throw Error('This is not a valid member backup.');if(!confirm(`Restore ${obj.members.length} records? Matching IDs will be replaced.`))return;for(let m of obj.members)if(m.id&&m.name&&m.mobile)await save(m);await refresh();alert('Backup restored successfully.')}
+$('add').onclick=()=>edit();$('search').oninput=render;$('backup').onclick=backup;$('restore').onclick=()=>$('file').click();$('file').onchange=async e=>{try{if(e.target.files[0])await restore(e.target.files[0])}catch(err){alert(err.message)}e.target.value=''};$('wipe').onclick=async()=>{if(confirm('This permanently deletes ALL members and payments from this phone. Export a backup first. Continue?')){let tx=db.transaction('members','readwrite');tx.objectStore('members').clear();tx.oncomplete=refresh}};
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{tab=b.dataset.tab;document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));render()});
+openDB().then(refresh).catch(e=>alert('Local database error: '+e.message));
+if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+</script></body></html>
